@@ -15,103 +15,91 @@
       color: #1a1a2e;
       background: #fafafa;
     }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 0.25rem;
-      color: #0f0f23;
-    }
+    h1 { font-size: 2rem; margin-bottom: 0.25rem; color: #0f0f23; }
     .subtitle {
-      color: #666;
-      font-size: 0.95rem;
-      margin-bottom: 2rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid #e0e0e0;
+      color: #666; font-size: 0.95rem; margin-bottom: 2rem;
+      padding-bottom: 1.5rem; border-bottom: 1px solid #e0e0e0;
     }
-    h2 {
-      font-size: 1.25rem;
-      margin-top: 2rem;
-      margin-bottom: 0.75rem;
-      color: #0f0f23;
-    }
+    h2 { font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; color: #0f0f23; }
     p { margin-bottom: 1rem; color: #333; }
-    ul {
-      margin: 0.5rem 0 1rem 1.5rem;
-      color: #333;
-    }
+    ul { margin: 0.5rem 0 1rem 1.5rem; color: #333; }
     li { margin-bottom: 0.4rem; }
     a { color: #4361ee; }
+    code {
+      background: #eef2ff; padding: 2px 6px;
+      border-radius: 4px; font-size: 0.88em;
+    }
     .highlight-box {
-      background: #eef2ff;
-      border-left: 4px solid #4361ee;
-      padding: 1rem 1.25rem;
-      border-radius: 0 8px 8px 0;
-      margin: 1.5rem 0;
+      background: #eef2ff; border-left: 4px solid #4361ee;
+      padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1.5rem 0;
     }
     .highlight-box p { margin-bottom: 0; color: #1e3a5f; }
     footer {
-      margin-top: 3rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid #e0e0e0;
-      color: #888;
-      font-size: 0.85rem;
+      margin-top: 3rem; padding-top: 1.5rem;
+      border-top: 1px solid #e0e0e0; color: #888; font-size: 0.85rem;
     }
   </style>
 </head>
 <body>
-
   <h1>Privacy Policy</h1>
   <p class="subtitle">YouTube Summarizer — Chrome Extension &middot; Last updated: February 27, 2026</p>
 
   <div class="highlight-box">
-    <p><strong>TL;DR:</strong> We don't collect, store, or sell your personal data. The extension processes YouTube video content solely to generate summaries for you.</p>
+    <p><strong>TL;DR:</strong> We don't collect, store, or sell your personal data. Video transcripts are sent directly from your browser to Google's Gemini API using your own API key — we never see them.</p>
   </div>
 
   <h2>1. Introduction</h2>
-  <p>This Privacy Policy describes how YouTube Summarizer ("the Extension", "we", "our") handles information when you use our Chrome extension. We are committed to protecting your privacy and being transparent about our practices.</p>
+  <p>This Privacy Policy describes how YouTube Summarizer ("the Extension") handles information when you use our Chrome extension. We are committed to protecting your privacy and being transparent about our practices.</p>
 
-  <h2>2. Information We Collect</h2>
-  <p>The Extension accesses the following data <strong>only when you actively use it</strong>:</p>
+  <h2>2. Data Stored Locally</h2>
+  <p>The following data is stored <strong>only on your device</strong> using Chrome's built-in storage APIs — none of it is transmitted to us:</p>
   <ul>
-    <li><strong>YouTube video metadata:</strong> Video title, URL, and transcript/captions of the video you are currently viewing, used solely to generate a summary.</li>
-    <li><strong>No personal data:</strong> We do not collect your name, email address, browsing history, or any other personally identifiable information.</li>
-    <li><strong>No tracking:</strong> We do not use analytics, cookies, or any tracking technologies.</li>
+    <li><strong>API key</strong> — Your Google Gemini API key, stored in <code>chrome.storage.local</code>. It leaves your browser only when sent directly to Google's API.</li>
+    <li><strong>Language preferences</strong> — Your preferred summary languages, stored in <code>chrome.storage.sync</code>.</li>
+    <li><strong>Cached results</strong> — Previously generated summaries and fact-checks, stored locally to avoid redundant API calls.</li>
+    <li><strong>Consent flag</strong> — Whether you accepted the data-sharing notice.</li>
+    <li><strong>No personal data:</strong> We do not collect your name, email, browsing history, or any personally identifiable information.</li>
+    <li><strong>No tracking:</strong> No analytics, no cookies, no telemetry.</li>
   </ul>
 
-  <h2>3. How We Use Information</h2>
-  <p>Video content accessed by the Extension is used exclusively to generate text summaries for your personal use. Data is processed in real-time and is <strong>not stored</strong> on any server after the summary is delivered.</p>
+  <h2>3. Data Sent Externally</h2>
+  <p>When you click "Summarize this" or "Fact Check" on a YouTube video, the video's transcript is sent <strong>directly from your browser</strong> to Google's Gemini API (<code>generativelanguage.googleapis.com</code>) for processing, using your own API key.</p>
+  <p>The Extension does not route data through any intermediary server. The only external communication is between your browser and Google's API.</p>
 
   <h2>4. Third-Party Services</h2>
-  <p>The Extension may use third-party AI APIs (such as OpenAI or similar services) to generate summaries. When this occurs:</p>
+  <p>The Extension interacts only with:</p>
   <ul>
-    <li>Only the video transcript or caption data is sent to the API.</li>
-    <li>No personal or identifying information is transmitted.</li>
-    <li>Third-party services are subject to their own privacy policies.</li>
+    <li><strong>YouTube</strong> (<code>youtube.com</code>) — To read video transcripts directly from the page.</li>
+    <li><strong>Google Gemini API</strong> — To generate summaries and fact-checks. Governed by <a href="https://ai.google.dev/gemini-api/terms" target="_blank">Google's API Terms of Service</a>.</li>
   </ul>
 
-  <h2>5. Data Storage &amp; Security</h2>
-  <p>We do not maintain any databases or servers that store user data. Extension preferences (if any) are stored locally on your device using Chrome's built-in storage APIs and are never transmitted externally.</p>
+  <h2>5. Data Retention</h2>
+  <p>All data is stored locally on your device and can be removed at any time by:</p>
+  <ul>
+    <li>Removing the Extension from Chrome</li>
+    <li>Clearing extension data via <code>chrome://extensions</code></li>
+  </ul>
 
   <h2>6. Permissions</h2>
   <p>The Extension requests only the minimum Chrome permissions necessary to function:</p>
   <ul>
-    <li><strong>activeTab:</strong> To access the current YouTube page content when you activate the extension.</li>
-    <li><strong>storage:</strong> To save your local preferences (e.g., summary length, language).</li>
+    <li><strong>storage</strong> — To save your API key, language preferences, and cached results locally.</li>
+    <li><strong>Host permission for <code>generativelanguage.googleapis.com</code></strong> — To call Google's Gemini API.</li>
+    <li><strong>Content script on <code>youtube.com</code></strong> — To inject the Summarize button and read video transcripts from the page.</li>
   </ul>
 
   <h2>7. Children's Privacy</h2>
   <p>The Extension is not directed at children under 13. We do not knowingly collect information from children.</p>
 
   <h2>8. Changes to This Policy</h2>
-  <p>We may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated "Last updated" date. Continued use of the Extension after changes constitutes acceptance of the revised policy.</p>
+  <p>We may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated "Last updated" date. The Extension's next release will also reflect any changes.</p>
 
   <h2>9. Contact Us</h2>
-  <p>If you have any questions or concerns about this Privacy Policy, please contact us at:</p>
+  <p>If you have any questions or concerns about this Privacy Policy, please contact:</p>
   <p><a href="mailto:marvelousPizza@proton.me">marvelousPizza@proton.me</a></p>
 
   <footer>
     <p>&copy; 2026 YouTube Summarizer. All rights reserved.</p>
   </footer>
-
 </body>
 </html>
-
